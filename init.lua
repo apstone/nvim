@@ -835,7 +835,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -882,6 +882,10 @@ require('lazy').setup({
   require 'custom.plugins.bufferline',
   require 'custom.plugins.lazygit',
   require 'custom.plugins.nui',
+  require 'custom.plugins.trouble',
+  require 'custom.plugins.dressing',
+  require 'custom.plugins.noice',
+  require 'custom.plugins.notify',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
