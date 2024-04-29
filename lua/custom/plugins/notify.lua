@@ -23,11 +23,20 @@ return {
     end,
   },
   init = function()
+    local core = require 'lazy.core.config'
+    local function on_very_lazy(fn)
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'VeryLazy',
+        callback = function()
+          fn()
+        end,
+      })
+    end
     -- when noice is not enabled, install notify on VeryLazy
-    -- if not LazyVim.has 'noice.nvim' then
-    -- LazyVim.on_very_lazy(function()
-    --  vim.notify = require 'notify'
-    -- end)
-    -- end
+    if not core.spec.plugins['noice.nvim'] then
+      on_very_lazy(function()
+        vim.notify = require 'notify'
+      end)
+    end
   end,
 }
