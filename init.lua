@@ -813,6 +813,11 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      require('mini.indentscope').setup {
+        symbol = '│',
+        options = { try_as_border = true },
+      }
+
       require('mini.bufremove').setup {
         keys = {
           {
@@ -900,7 +905,6 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
@@ -914,6 +918,7 @@ require('lazy').setup({
   require 'custom.plugins.notify',
   require 'custom.plugins.spectre',
   require 'custom.plugins.tmux-navigation',
+  require 'custom.plugins.dashboard',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
