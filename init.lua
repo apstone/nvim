@@ -372,6 +372,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'harpoon')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -900,6 +901,7 @@ require('lazy').setup({
   require 'custom.plugins.tmux-navigation',
   require 'custom.plugins.dashboard',
   require 'custom.plugins.persistence',
+  require 'custom.plugins.harpoon',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
