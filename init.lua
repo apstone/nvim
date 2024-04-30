@@ -161,6 +161,9 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Allow delete buffer
+vim.keymap.set('n', '<leader>bd', '<cmd>bd<CR>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -818,30 +821,7 @@ require('lazy').setup({
         options = { try_as_border = true },
       }
 
-      require('mini.bufremove').setup {
-        keys = {
-          {
-            '<leader>bd',
-            function()
-              local bd = require('mini.bufremove').delete
-              if vim.bo.modified then
-                local choice = vim.fn.confirm(('Save changes to %q?'):format(vim.fn.bufname()), '&Yes\n&No\n&Cancel')
-                if choice == 1 then -- Yes
-                  vim.cmd.write()
-                  bd(0)
-                elseif choice == 2 then -- No
-                  bd(0, true)
-                end
-              else
-                bd(0)
-              end
-            end,
-            desc = 'Delete Buffer',
-          },
-    -- stylua: ignore
-    { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
-        },
-      }
+      require('mini.bufremove').setup {}
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -919,6 +899,7 @@ require('lazy').setup({
   require 'custom.plugins.spectre',
   require 'custom.plugins.tmux-navigation',
   require 'custom.plugins.dashboard',
+  require 'custom.plugins.persistence',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
