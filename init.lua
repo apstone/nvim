@@ -157,6 +157,9 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Floating Terminal
+vim.keymap.set('n', '<leader>ft', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<leader>ft', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -902,6 +905,7 @@ require('lazy').setup({
   require 'custom.plugins.dashboard',
   require 'custom.plugins.persistence',
   require 'custom.plugins.harpoon',
+  require 'custom.plugins.FTerm',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
